@@ -1,5 +1,5 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -11,6 +11,9 @@ export class ButtonComponent {
   @Input()
   public text: string = '';
 
+  @Output()
+  public textOut: EventEmitter<string> = new EventEmitter();
+
   @ViewChild('button', {static: false})
   private button: ElementRef | null = null;
 
@@ -20,6 +23,10 @@ export class ButtonComponent {
     if (this.button) {
       this.focusMonitor.focusVia(this.button, focusOrigin);
     }
+  }
+
+  public clickEnter(): void {
+    this.textOut.emit(this.text);
   }
 
 }

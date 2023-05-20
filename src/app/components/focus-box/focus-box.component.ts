@@ -1,5 +1,5 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, Output, ViewChild, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-focus-box',
@@ -11,6 +11,9 @@ export class FocusBoxComponent {
   @Input()
   public title: string = '';
 
+  @Output()
+  public textOut: EventEmitter<string> = new EventEmitter();
+
   @ViewChild('box', {static: false})
   private box: ElementRef | null = null;
 
@@ -20,6 +23,10 @@ export class FocusBoxComponent {
     if (this.box) {
       this.focusMonitor.focusVia(this.box, focusOrigin);
     }
+  }
+
+  public clickEnter(): void {
+    this.textOut.emit(this.title);
   }
 
 }
