@@ -1,7 +1,10 @@
-<div class="main-page" (click)="getPagefocus()" (keydown)="onKeydown($event)">
+<div class="main-page" tabindex="0" (focus)="getPagefocus()" (keydown)="onKeydown($event)">
     <div class="container">
         <div *ngFor="let boxTitle of boxTitleList">
             <app-focus-box [title]="boxTitle" class="box" #focusableItem></app-focus-box>
+        </div>
+        <div *ngFor="let buttonTitle of buttonTitleList">
+            <app-button [text]="buttonTitle" class="box" #focusableItem></app-button>
         </div>
     </div>
 </div>
