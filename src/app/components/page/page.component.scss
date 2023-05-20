@@ -1,0 +1,14 @@
+.main-page {
+    height: 25rem;
+    background-color: darkgray;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+
+    .container {
+        width: 50%;
+        padding: 10px;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+}
